@@ -1,0 +1,14 @@
+{
+	"extends": [
+      "next",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+  	"plugins": ["@typescript-eslint/eslint-plugin"],
+	"rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "react/react-in-jsx-scope": "off"
+    }
+}
