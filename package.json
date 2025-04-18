@@ -1,5 +1,5 @@
 {
-  "name": "nini_world",
+  "name": "dduzi",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
     "axios": "^1.8.1",
     "classnames": "^2.5.1",
     "dotenv": "^16.4.7",
+    "kakao": "link:next-auth/providers/kakao",
     "next": "15.1.6",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",

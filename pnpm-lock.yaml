@@ -17,6 +17,9 @@ importers:
       dotenv:
         specifier: ^16.4.7
         version: 16.5.0
+      kakao:
+        specifier: link:next-auth/providers/kakao
+        version: link:next-auth/providers/kakao
       next:
         specifier: 15.1.6
         version: 15.1.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.86.3)

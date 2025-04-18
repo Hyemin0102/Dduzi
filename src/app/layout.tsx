@@ -1,3 +1,4 @@
+import AuthSession from "components/providers/session-provider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
@@ -44,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body className={`${Pretendard.className} ${SpecialFont.variable}`}>
-        {children}
+        <AuthSession>{children}</AuthSession>
       </body>
     </html>
   );
