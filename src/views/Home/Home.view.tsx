@@ -7,11 +7,7 @@ import Login from "components/login/Login";
 const cx = cn.bind(styles);
 
 const HomeView = () => {
-  return (
-    <div>
-      <Login />
-    </div>
-  );
+  return <div>홈화면</div>;
 };
 
 export default HomeView;

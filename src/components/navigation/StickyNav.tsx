@@ -5,6 +5,7 @@ import styles from "./StickyNav.module.scss";
 import { ROUTES } from "constants/route.constant";
 import cn from "classnames/bind";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const cx = cn.bind(styles);
 
@@ -27,7 +28,13 @@ const StickyNav = () => {
   return (
     <nav className={cx("StickyNav")}>
       <div className={styles.logo}>
-        <h1>뜨지</h1>
+        <h1>Dduzi</h1>
+        <Image
+          src={"/static/images/dduzi_logo.png"}
+          alt={"뜨지"}
+          width={30}
+          height={30}
+        />
       </div>
 
       <ul className={cx("NavItems")}>
