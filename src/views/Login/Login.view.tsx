@@ -15,7 +15,12 @@ const LoginView = () => {
       <div onClick={() => handleLogin("kakao")} className={cx("LoginBox")}>
         카카오 로그인 하기
       </div>
-      <div className={cx("LoginBox")}>구글 로그인 하기</div>
+      <div onClick={() => handleLogin("naver")} className={cx("LoginBox")}>
+        네이버 로그인 하기
+      </div>
+      <div onClick={() => handleLogin("google")} className={cx("LoginBox")}>
+        구글 로그인 하기
+      </div>
     </div>
   );
 };
