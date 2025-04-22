@@ -39,14 +39,16 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            Int    @id @default(autoincrement())
   name          String?
-  email         String?   @unique
-  nickName      String?    @unique
+email         String?   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  nickName      String?   @unique
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 }
 model VerificationToken {
   identifier String

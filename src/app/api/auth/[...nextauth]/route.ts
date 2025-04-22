@@ -48,9 +48,6 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  pages: {
-    newUser: "/welcome", //신규 유저는 /welcome 페이지 이동
-  },
   secret: process.env.NEXTAUTH_SECRET,
 };
 

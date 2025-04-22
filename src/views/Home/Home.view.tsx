@@ -10,10 +10,7 @@ import { log } from "node:console";
 const cx = cn.bind(styles);
 
 const HomeView = () => {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-  console.log("session", session);
-  console.log("status", status);
+  const { data: session } = useSession();
 
   const handleLogout = () => {
     signOut({ callbackUrl: "/login" });
