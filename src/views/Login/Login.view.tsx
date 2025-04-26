@@ -18,10 +18,8 @@ const LoginView = () => {
 
   useEffect(() => {
     // 로그인된 경우
-    if (session) {
-      if (session.user.nickName) {
-        router.push("/"); // 홈으로 리다이렉트
-      }
+    if (session?.user?.nickName) {
+      router.push("/");
     }
   }, [session, status, router]);
 
@@ -31,7 +29,7 @@ const LoginView = () => {
   return session ? (
     <div>
       {session.user.email}계정으로 가입됩니다. 닉네임을 설정해주세요.
-      <NicknameSetupForm userId={session.user.id} />
+      <NicknameSetupForm />
     </div>
   ) : (
     <div className={cx("LoginBoxWrapper")}>

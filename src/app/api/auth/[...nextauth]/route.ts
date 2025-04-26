@@ -8,11 +8,12 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 // 인증 옵션 정의
 export const authOptions: NextAuthOptions = {
+  debug: true,
   adapter: PrismaAdapter(prisma), //db사용자 저장
   providers: [
     KakaoProvider({
-      clientId: process.env.KAKAO_CLIENT_ID as string,
-      clientSecret: process.env.KAKAO_CLIENT_SECRET as string,
+      clientId: process.env.KAKAO_CLIENT_ID || "",
+      clientSecret: process.env.KAKAO_CLIENT_SECRET || "",
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
@@ -24,20 +25,12 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user }) {
       if (!user.email) {
         return false; // 로그인 실패
       }
 
       return true;
-    },
-    async jwt({ token, account, profile }) {
-      console.log("JWT 콜백:", { token, account });
-      if (account && account.access_token && account.id) {
-        token.accessToken = account.access_token;
-        token.id = account.id as string;
-      }
-      return token;
     },
     async session({ session, token, user }) {
       if (token) {
