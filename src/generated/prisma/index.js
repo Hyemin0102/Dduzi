@@ -154,7 +154,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/hyeminjo/web/Dduzi/src/generated/prisma",
+      "value": "/Users/johyemin/Dduzi/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -168,7 +168,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/hyeminjo/web/Dduzi/prisma/schema.prisma",
+    "sourceFilePath": "/Users/johyemin/Dduzi/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

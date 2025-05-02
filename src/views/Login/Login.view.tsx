@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames/bind";
 import styles from "./Login.view.module.scss";
 import { signIn, useSession } from "next-auth/react";
@@ -9,37 +9,39 @@ import NicknameSetupForm from "components/login/NicknameSetupForm";
 const cx = cn.bind(styles);
 
 const LoginView = () => {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-  console.log("session", session);
+  const [isLoading, setIsLoading] = useState(false);
 
-  //1. 첫 가입한 유저는 닉네임 설정
-  //2. 재로그인은 바로 홈으로 이동
-
-  useEffect(() => {
-    // 로그인된 경우
-    if (session?.user?.nickName) {
-      router.push("/");
+  const handleSocialLogin = async (provider: string) => {
+    setIsLoading(true);
+    try {
+      await signIn(provider, {
+        callbackUrl: "/",
+      });
+    } catch (error) {
+      console.error(`${provider} 로그인 실패:`, error);
+    } finally {
+      setIsLoading(false);
     }
-  }, [session, status, router]);
-
-  const handleLogin = (type: string) => {
-    signIn(type);
   };
-  return session ? (
-    <div>
-      {session.user.email}계정으로 가입됩니다. 닉네임을 설정해주세요.
-      <NicknameSetupForm />
-    </div>
-  ) : (
+
+  return (
     <div className={cx("LoginBoxWrapper")}>
-      <div onClick={() => handleLogin("kakao")} className={cx("LoginBox")}>
+      <div
+        onClick={() => handleSocialLogin("kakao")}
+        className={cx("LoginBox")}
+      >
         카카오 로그인 하기
       </div>
-      <div onClick={() => handleLogin("naver")} className={cx("LoginBox")}>
+      <div
+        onClick={() => handleSocialLogin("naver")}
+        className={cx("LoginBox")}
+      >
         네이버 로그인 하기
       </div>
-      <div onClick={() => handleLogin("google")} className={cx("LoginBox")}>
+      <div
+        onClick={() => handleSocialLogin("google")}
+        className={cx("LoginBox")}
+      >
         구글 로그인 하기
       </div>
     </div>

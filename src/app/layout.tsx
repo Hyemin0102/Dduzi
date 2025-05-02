@@ -1,5 +1,7 @@
+//import AuthSession from "components/providers/session-provider";
 import AuthSession from "components/providers/session-provider";
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {

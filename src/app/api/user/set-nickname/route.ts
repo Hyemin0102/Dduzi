@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
-    console.log("session", session);
+    console.log("api 세션", session);
 
     if (!session || !session.user) {
       return NextResponse.json(
@@ -16,10 +16,8 @@ export async function POST(req: NextRequest) {
         { status: 401 }
       );
     }
-
     const body = await req.json();
     const nickname = body.nickname;
-    console.log("nickname???", nickname);
 
     // 닉네임 중복 체크
     const existingUser = await prisma.user.findFirst({

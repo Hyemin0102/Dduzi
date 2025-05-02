@@ -29,18 +29,51 @@ export const authOptions: NextAuthOptions = {
       if (!user.email) {
         return false; // 로그인 실패
       }
-
+      console.log("user 내용:", user);
       return true;
     },
-    async session({ session, token, user }) {
-      if (token) {
-        session.accessToken = token.accessToken;
-        session.user.id = token.id;
-        session.user.nickName = (user as any).nickName;
+    async jwt({ token, account }) {
+      //account 최초 로그인 시 생성
+      if (token.email) {
+        const userFromDb = await prisma.user.findUnique({
+          where: {
+            email: token.email,
+          },
+        });
+
+        if (userFromDb && userFromDb.nickName) {
+          token.nickName = userFromDb.nickName;
+        }
       }
 
+      if (account) {
+        //최초 로그인 시 token에 업데이트
+        token.id = account.id;
+        token.accessToken = account.access_token;
+        token.refreshToken = account.refresh_token;
+        token.provider = account.provider;
+      }
+      console.log("JWT 토큰 내용:", token);
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.accessToken = token.accessToken;
+        session.refreshToken = token.refreshToken;
+        session.provider = token.provider;
+        session.accessToken = token.accessToken;
+        session.user.id = token.id;
+        session.user.nickName = token.nickName;
+      }
+      console.log("session 내용:", session);
       return session;
     },
+  },
+  pages: {
+    signIn: "/login",
+  },
+  session: {
+    strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
