@@ -10,9 +10,8 @@ const cx = cn.bind(styles);
 const HomeView = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  console.log("session", session);
 
-  //session.user.nickName이 있으면 바로 보여주고 없으면 설정하는 페이지로 이동
+  //닉네임 여부
   useEffect(() => {
     if (status === "authenticated") {
       if (!session?.user?.nickName) {

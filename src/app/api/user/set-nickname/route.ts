@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       );
     }
     const body = await req.json();
-    const nickname = body.nickname;
+    const { nickname, image } = body;
 
     // 닉네임 중복 체크
     const existingUser = await prisma.user.findFirst({
@@ -38,12 +38,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    //닉네임, 프로필 랜덤 이미지 업데이트
     const updatedUser = await prisma.user.update({
       where: {
         email: session.user.email,
       },
       data: {
         nickName: nickname,
+        image: image,
       },
     });
 

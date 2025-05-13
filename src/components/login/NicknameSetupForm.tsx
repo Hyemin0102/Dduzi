@@ -10,6 +10,15 @@ const cx = cn.bind(styles);
 
 interface NicknameSetupFormProps {}
 
+const ImageList: string[] = [
+  "https://picsum.photos/id/10/200/200",
+  "https://picsum.photos/id/20/200/200",
+  "https://picsum.photos/id/30/200/200",
+  "https://picsum.photos/id/40/200/200",
+  "https://picsum.photos/id/50/200/200",
+  "https://picsum.photos/id/60/200/200",
+];
+
 const NicknameSetupForm = (props: NicknameSetupFormProps) => {
   const { update } = useSession();
   const [nickname, setNickname] = useState(""); //입력하는 닉네임
@@ -23,25 +32,22 @@ const NicknameSetupForm = (props: NicknameSetupFormProps) => {
     setIsLoading(true);
 
     try {
+      const randomIndex = Math.floor(Math.random() * ImageList.length);
+      const randomImage = ImageList[randomIndex];
       // 닉네임 업데이트 API 호출
       const response = await fetch("/api/user/set-nickname", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nickname }),
+        body: JSON.stringify({ nickname, image: randomImage }),
       });
 
-      // 응답을 텍스트로 가져와서 분석
-      console.log("응답", response);
-
-      const responseText = await response.text();
-      console.log("응답 텍스트:", responseText);
       if (response.ok) {
-        await update({
-          user: { nickName: nickname },
-        });
-        alert("닉네임이 성공적으로 설정되었습니다.");
+        const responseData = await response.json();
+        console.log("응답 데이터:", responseData);
+        await update();
+
         router.push("/");
       }
     } catch (error) {

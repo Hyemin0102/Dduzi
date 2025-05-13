@@ -1,5 +1,6 @@
 "use client";
 import { useSession, signOut } from "next-auth/react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -7,6 +8,7 @@ const NickNameView = () => {
   const pathname = usePathname();
   const router = useRouter();
   const { data: session, status } = useSession();
+  console.log("홈 세션", session);
 
   const decodedPathname = decodeURIComponent(pathname);
   const nickname = decodedPathname.slice(1);
@@ -29,6 +31,17 @@ const NickNameView = () => {
   return (
     <div>
       <div>{nickname}님의 페이지</div>
+      <div
+        style={{
+          backgroundImage: `url(${session?.user.image})`,
+          width: "72px",
+          height: "72px",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          borderRadius: 100,
+          marginRight: 16,
+        }}
+      />
       <button onClick={() => handleSignOut()}>로그아웃</button>
     </div>
   );

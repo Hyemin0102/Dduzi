@@ -46,6 +46,10 @@ export const authOptions: NextAuthOptions = {
         if (userFromDb && userFromDb.nickName) {
           token.nickName = userFromDb.nickName;
         }
+
+        if (userFromDb && userFromDb.image) {
+          token.image = userFromDb.image;
+        }
       }
 
       if (account) {
@@ -67,6 +71,7 @@ export const authOptions: NextAuthOptions = {
         session.accessToken = token.accessToken;
         session.user.id = token.id;
         session.user.nickName = token.nickName;
+        session.user.image = token.image;
       }
       console.log("session 내용:", session);
       return session;
