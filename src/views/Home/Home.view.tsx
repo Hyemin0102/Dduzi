@@ -4,8 +4,6 @@ import styles from "./Home.view.module.scss";
 import cn from "classnames/bind";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { ROUTES } from "constants/route.constant";
-import { log } from "node:console";
 
 const cx = cn.bind(styles);
 
@@ -20,6 +18,9 @@ const HomeView = () => {
       if (!session?.user?.nickName) {
         //닉네임 없으면 이동
         router.push("/set-profile");
+      } else {
+        //닉네임 있으면 개인페이지로 이동
+        router.push(`/${session.user.nickName}`);
       }
     }
   }, [session, status, router]);

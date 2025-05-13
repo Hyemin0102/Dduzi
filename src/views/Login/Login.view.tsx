@@ -9,10 +9,24 @@ import NicknameSetupForm from "components/login/NicknameSetupForm";
 const cx = cn.bind(styles);
 
 const LoginView = () => {
+  const router = useRouter();
+  const { data: session, status } = useSession();
   const [isLoading, setIsLoading] = useState(false);
+
+  //이미 로그인 상태면 개인페이지로 이동
+  useEffect(() => {
+    if (status === "authenticated") {
+      if (session?.user?.nickName) {
+        router.push(`/${session.user.nickName}`);
+      } else {
+        router.push("/set-profile");
+      }
+    }
+  }, [session, status, router]);
 
   const handleSocialLogin = async (provider: string) => {
     setIsLoading(true);
+    //콜백url에 설정한 닉네임 붙혀서 구분
     try {
       await signIn(provider, {
         callbackUrl: "/",

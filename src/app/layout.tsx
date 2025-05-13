@@ -1,5 +1,7 @@
 //import AuthSession from "components/providers/session-provider";
+import StickyNav from "components/navigation/StickyNav";
 import AuthSession from "components/providers/session-provider";
+import CommonLayout from "layouts/CommonLayout";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import localFont from "next/font/local";
@@ -47,7 +49,9 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body className={`${Pretendard.className} ${SpecialFont.variable}`}>
-        <AuthSession>{children}</AuthSession>
+        <CommonLayout header={<StickyNav />}>
+          <AuthSession>{children}</AuthSession>
+        </CommonLayout>
       </body>
     </html>
   );

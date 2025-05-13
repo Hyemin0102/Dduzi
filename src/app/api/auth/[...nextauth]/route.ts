@@ -26,14 +26,16 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user }) {
+      // 로그인 실패
       if (!user.email) {
-        return false; // 로그인 실패
+        return false;
       }
       console.log("user 내용:", user);
       return true;
     },
+
     async jwt({ token, account }) {
-      //account 최초 로그인 시 생성
+      //account는 최초 로그인 시 생성
       if (token.email) {
         const userFromDb = await prisma.user.findUnique({
           where: {
@@ -53,6 +55,7 @@ export const authOptions: NextAuthOptions = {
         token.refreshToken = account.refresh_token;
         token.provider = account.provider;
       }
+      console.log("account 내용:", account);
       console.log("JWT 토큰 내용:", token);
       return token;
     },
