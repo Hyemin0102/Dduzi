@@ -25,17 +25,25 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user }) {
+    async signIn({ user, account, profile }) {
       // 로그인 실패
       if (!user.email) {
         return false;
       }
+
       console.log("user 내용:", user);
       return true;
     },
 
-    async jwt({ token, account }) {
-      //account는 최초 로그인 시 생성
+    async jwt({ token, account, user }) {
+      // 로그인 시 user 정보로 token 업데이트
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
+        token.image = user.image;
+      }
+
       if (token.email) {
         const userFromDb = await prisma.user.findUnique({
           where: {
@@ -44,7 +52,7 @@ export const authOptions: NextAuthOptions = {
         });
 
         if (userFromDb && userFromDb.nickName) {
-          token.nickName = userFromDb.nickName;
+          token.nickname = userFromDb.nickName;
         }
 
         if (userFromDb && userFromDb.image) {
@@ -52,14 +60,13 @@ export const authOptions: NextAuthOptions = {
         }
       }
 
+      //새 로그인 세션이면 provider 정보 업데이트
       if (account) {
-        //최초 로그인 시 token에 업데이트
-        token.id = account.id;
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
         token.provider = account.provider;
       }
-      console.log("account 내용:", account);
+
       console.log("JWT 토큰 내용:", token);
       return token;
     },
@@ -68,10 +75,12 @@ export const authOptions: NextAuthOptions = {
         session.accessToken = token.accessToken;
         session.refreshToken = token.refreshToken;
         session.provider = token.provider;
-        session.accessToken = token.accessToken;
+
         session.user.id = token.id;
-        session.user.nickName = token.nickName;
+        session.user.nickName = token.nickname;
         session.user.image = token.image;
+        session.user.name = token.name;
+        session.user.email = token.email;
       }
       console.log("session 내용:", session);
       return session;

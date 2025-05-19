@@ -5,12 +5,13 @@
 
 .MainContent {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   margin-left: 220px;
   padding: 20px;
   box-sizing: border-box;
   width: calc(100% - 220px);
+  border: 1px solid red;
 }
 
 // 반응형 스타일

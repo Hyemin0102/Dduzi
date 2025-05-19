@@ -3,8 +3,12 @@ import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+import styles from "./MyHome.view.module.scss";
+import cn from "classnames/bind";
 
-const NickNameView = () => {
+const cx = cn.bind(styles);
+
+const MyHomeView = () => {
   const pathname = usePathname();
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -29,22 +33,29 @@ const NickNameView = () => {
   };
 
   return (
-    <div>
-      <div>{nickname}님의 페이지</div>
-      <div
-        style={{
-          backgroundImage: `url(${session?.user.image})`,
-          width: "72px",
-          height: "72px",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          borderRadius: 100,
-          marginRight: 16,
-        }}
-      />
-      <button onClick={() => handleSignOut()}>로그아웃</button>
+    <div className={cx("Wrapper")}>
+      <div className={cx("ProfileWrapper")}>
+        <div
+          className={cx("ProfileImage")}
+          style={{
+            backgroundImage: `url(${session?.user.image})`,
+          }}
+        />
+        <div className={cx("ProfileText")}>
+          안녕하세요☺️ {nickname} 님의 뜨지입니다🧶
+        </div>
+      </div>
+
+      <div className={cx("ButtonWrapper")}>
+        <button className={cx("ProfileEditButton", "Button")}>
+          프로필 편집
+        </button>
+        <button className={cx("Button")} onClick={() => handleSignOut()}>
+          로그아웃
+        </button>
+      </div>
     </div>
   );
 };
 
-export default NickNameView;
+export default MyHomeView;

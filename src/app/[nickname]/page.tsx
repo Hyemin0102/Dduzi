@@ -1,8 +1,8 @@
 import React from "react";
-import NickNameView from "views/NickName/NickName.view";
+import MyHomeView from "views/MyHome/MyHome.view";
 
 const NicknamePage = () => {
-  return <NickNameView />;
+  return <MyHomeView />;
 };
 
 export default NicknamePage;

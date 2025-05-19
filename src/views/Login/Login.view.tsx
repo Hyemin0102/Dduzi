@@ -12,6 +12,7 @@ const LoginView = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
   const [isLoading, setIsLoading] = useState(false);
+  console.log("로그인 세션", session);
 
   //이미 로그인 상태면 개인페이지로 이동
   useEffect(() => {
