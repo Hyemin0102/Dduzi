@@ -4,7 +4,7 @@ import cn from "classnames/bind";
 import styles from "./Login.view.module.scss";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import NicknameSetupForm from "components/login/NicknameSetupForm";
+import Image from "next/image";
 
 const cx = cn.bind(styles);
 
@@ -40,24 +40,76 @@ const LoginView = () => {
   };
 
   return (
-    <div className={cx("LoginBoxWrapper")}>
-      <div
-        onClick={() => handleSocialLogin("kakao")}
-        className={cx("LoginBox")}
-      >
-        카카오 로그인 하기
+    <div className={cx("Wrapper")}>
+      <div className={cx("onBoardingWrapper")}>
+        <div className={cx("onBoardingText")}>
+          <h1>뜨지에 오신걸 환영합니다 ;)</h1>
+          <p>
+            뜨지에서 작품을 자랑하고 조용하게 소통해요. <br></br>오늘은 뭐 뜨지?
+          </p>
+          <Image
+            src="/static/images/tool_tip.svg"
+            alt="말풍선 팁"
+            width={24}
+            height={32}
+            className={cx("Tooltip")}
+          />
+        </div>
+        <div className={cx("onBoardingImage")}>
+          <Image
+            src="/static/images/main_dduzi.svg"
+            alt="뜨지 캐릭터"
+            width={230}
+            height={400}
+            style={{
+              width: "100%",
+              height: "auto",
+              borderRadius: "16px",
+            }}
+          />
+        </div>
       </div>
-      <div
-        onClick={() => handleSocialLogin("naver")}
-        className={cx("LoginBox")}
-      >
-        네이버 로그인 하기
-      </div>
-      <div
-        onClick={() => handleSocialLogin("google")}
-        className={cx("LoginBox")}
-      >
-        구글 로그인 하기
+      <div className={cx("LoginBoxWrapper")}>
+        <div className={cx("LoginText")}>간편로그인</div>
+        <div className={cx("LoginButtonWrapper")}>
+          <div
+            onClick={() => handleSocialLogin("kakao")}
+            className={cx("LoginBox")}
+          >
+            <Image
+              src="/static/images/kakao_icon.png"
+              width={32}
+              height={32}
+              alt="카카오 아이콘"
+            />
+            카카오 로그인 하기
+          </div>
+          <div
+            onClick={() => handleSocialLogin("naver")}
+            className={cx("LoginBox")}
+          >
+            <Image
+              src="/static/images/naver_icon.png"
+              width={32}
+              height={32}
+              alt="네이버 아이콘"
+            />
+            네이버 로그인 하기
+          </div>
+          <div
+            onClick={() => handleSocialLogin("google")}
+            className={cx("LoginBox")}
+          >
+            <Image
+              src="/static/images/google_icon.png"
+              width={32}
+              height={32}
+              alt="구글 아이콘"
+            />
+            구글 로그인 하기
+          </div>
+        </div>
+        <div className={cx("LoginText")}>둘러보기</div>
       </div>
     </div>
   );

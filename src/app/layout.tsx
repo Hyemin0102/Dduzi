@@ -5,6 +5,7 @@ import CommonLayout from "layouts/CommonLayout";
 import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import localFont from "next/font/local";
+import "../styles/index.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",
