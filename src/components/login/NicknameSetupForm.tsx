@@ -35,7 +35,7 @@ const NicknameSetupForm = (props: NicknameSetupFormProps) => {
       const randomIndex = Math.floor(Math.random() * ImageList.length);
       const randomImage = ImageList[randomIndex];
       // 닉네임 업데이트 API 호출
-      const response = await fetch("/api/user/set-nickname", {
+      const response = await fetch("/api/user/setNickname", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,6 +46,7 @@ const NicknameSetupForm = (props: NicknameSetupFormProps) => {
       if (response.ok) {
         const responseData = await response.json();
         console.log("응답 데이터:", responseData);
+
         await update();
 
         router.push("/");

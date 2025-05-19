@@ -20,7 +20,7 @@ const LoginView = () => {
       if (session?.user?.nickName) {
         router.push(`/${session.user.nickName}`);
       } else {
-        router.push("/set-profile");
+        router.push("/accounts/set-nickname");
       }
     }
   }, [session, status, router]);

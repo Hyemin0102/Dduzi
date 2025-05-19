@@ -3470,6 +3470,7 @@ export namespace Prisma {
     emailVerified: Date | null
     image: string | null
     nickName: string | null
+    profileMemo: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3481,6 +3482,7 @@ export namespace Prisma {
     emailVerified: Date | null
     image: string | null
     nickName: string | null
+    profileMemo: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3492,6 +3494,7 @@ export namespace Prisma {
     emailVerified: number
     image: number
     nickName: number
+    profileMemo: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3513,6 +3516,7 @@ export namespace Prisma {
     emailVerified?: true
     image?: true
     nickName?: true
+    profileMemo?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3524,6 +3528,7 @@ export namespace Prisma {
     emailVerified?: true
     image?: true
     nickName?: true
+    profileMemo?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3535,6 +3540,7 @@ export namespace Prisma {
     emailVerified?: true
     image?: true
     nickName?: true
+    profileMemo?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3633,6 +3639,7 @@ export namespace Prisma {
     emailVerified: Date | null
     image: string | null
     nickName: string | null
+    profileMemo: string | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -3663,6 +3670,7 @@ export namespace Prisma {
     emailVerified?: boolean
     image?: boolean
     nickName?: boolean
+    profileMemo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
@@ -3677,6 +3685,7 @@ export namespace Prisma {
     emailVerified?: boolean
     image?: boolean
     nickName?: boolean
+    profileMemo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -3688,6 +3697,7 @@ export namespace Prisma {
     emailVerified?: boolean
     image?: boolean
     nickName?: boolean
+    profileMemo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -3699,11 +3709,12 @@ export namespace Prisma {
     emailVerified?: boolean
     image?: boolean
     nickName?: boolean
+    profileMemo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "nickName" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "nickName" | "profileMemo" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
@@ -3725,6 +3736,7 @@ export namespace Prisma {
       emailVerified: Date | null
       image: string | null
       nickName: string | null
+      profileMemo: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -4158,6 +4170,7 @@ export namespace Prisma {
     readonly emailVerified: FieldRef<"User", 'DateTime'>
     readonly image: FieldRef<"User", 'String'>
     readonly nickName: FieldRef<"User", 'String'>
+    readonly profileMemo: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -5625,6 +5638,7 @@ export namespace Prisma {
     emailVerified: 'emailVerified',
     image: 'image',
     nickName: 'nickName',
+    profileMemo: 'profileMemo',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5848,6 +5862,7 @@ export namespace Prisma {
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
     nickName?: StringNullableFilter<"User"> | string | null
+    profileMemo?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
@@ -5861,6 +5876,7 @@ export namespace Prisma {
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     nickName?: SortOrderInput | SortOrder
+    profileMemo?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     accounts?: AccountOrderByRelationAggregateInput
@@ -5877,6 +5893,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
+    profileMemo?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
@@ -5890,6 +5907,7 @@ export namespace Prisma {
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     nickName?: SortOrderInput | SortOrder
+    profileMemo?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -5909,6 +5927,7 @@ export namespace Prisma {
     emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     nickName?: StringNullableWithAggregatesFilter<"User"> | string | null
+    profileMemo?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -6114,6 +6133,7 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     nickName?: string | null
+    profileMemo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -6127,6 +6147,7 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     nickName?: string | null
+    profileMemo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -6139,6 +6160,7 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     nickName?: NullableStringFieldUpdateOperationsInput | string | null
+    profileMemo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -6152,6 +6174,7 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     nickName?: NullableStringFieldUpdateOperationsInput | string | null
+    profileMemo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -6165,6 +6188,7 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     nickName?: string | null
+    profileMemo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6175,6 +6199,7 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     nickName?: NullableStringFieldUpdateOperationsInput | string | null
+    profileMemo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6186,6 +6211,7 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     nickName?: NullableStringFieldUpdateOperationsInput | string | null
+    profileMemo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6510,6 +6536,7 @@ export namespace Prisma {
     emailVerified?: SortOrder
     image?: SortOrder
     nickName?: SortOrder
+    profileMemo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6525,6 +6552,7 @@ export namespace Prisma {
     emailVerified?: SortOrder
     image?: SortOrder
     nickName?: SortOrder
+    profileMemo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6536,6 +6564,7 @@ export namespace Prisma {
     emailVerified?: SortOrder
     image?: SortOrder
     nickName?: SortOrder
+    profileMemo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6919,6 +6948,7 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     nickName?: string | null
+    profileMemo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
@@ -6931,6 +6961,7 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     nickName?: string | null
+    profileMemo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
@@ -6958,6 +6989,7 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     nickName?: NullableStringFieldUpdateOperationsInput | string | null
+    profileMemo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
@@ -6970,6 +7002,7 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     nickName?: NullableStringFieldUpdateOperationsInput | string | null
+    profileMemo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
@@ -6981,6 +7014,7 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     nickName?: string | null
+    profileMemo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -6993,6 +7027,7 @@ export namespace Prisma {
     emailVerified?: Date | string | null
     image?: string | null
     nickName?: string | null
+    profileMemo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -7020,6 +7055,7 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     nickName?: NullableStringFieldUpdateOperationsInput | string | null
+    profileMemo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -7032,6 +7068,7 @@ export namespace Prisma {
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     nickName?: NullableStringFieldUpdateOperationsInput | string | null
+    profileMemo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput

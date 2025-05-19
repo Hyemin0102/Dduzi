@@ -51,12 +51,17 @@ export const authOptions: NextAuthOptions = {
           },
         });
 
-        if (userFromDb && userFromDb.nickName) {
-          token.nickname = userFromDb.nickName;
-        }
+        // if (userFromDb && userFromDb.nickName) {
+        //   token.nickname = userFromDb.nickName;
+        // }
 
-        if (userFromDb && userFromDb.image) {
+        // if (userFromDb && userFromDb.image) {
+        //   token.image = userFromDb.image;
+        // }
+        if (userFromDb) {
+          token.nickName = userFromDb.nickName;
           token.image = userFromDb.image;
+          token.profileMemo = userFromDb.profileMemo;
         }
       }
 
@@ -77,10 +82,11 @@ export const authOptions: NextAuthOptions = {
         session.provider = token.provider;
 
         session.user.id = token.id;
-        session.user.nickName = token.nickname;
+        session.user.nickName = token.nickName;
         session.user.image = token.image;
         session.user.name = token.name;
         session.user.email = token.email;
+        session.user.profileMemo = token.profileMemo;
       }
       console.log("session 내용:", session);
       return session;

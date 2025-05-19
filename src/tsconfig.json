@@ -33,7 +33,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/api/slack-notify",
-    "app/api/user/set-nickname"
+    "app/api/user/setNickname"
   ],
   "exclude": ["node_modules", "./src/lib/common/components/Icons/*.tsx"]
 }

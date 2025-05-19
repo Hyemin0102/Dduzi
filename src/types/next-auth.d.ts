@@ -10,6 +10,7 @@ declare module "next-auth" {
       id?: any;
       nickName?: any;
       image?: any;
+      profileMemo?: any;
     } & DefaultSession["user"];
   }
 
@@ -33,5 +34,6 @@ declare module "next-auth/jwt" {
     nickname?: string;
     refreshToken?: string;
     provider?: string;
+    profileMemo?: string | null;
   }
 }
