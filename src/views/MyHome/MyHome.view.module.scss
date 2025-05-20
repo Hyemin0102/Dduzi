@@ -1,34 +1,17 @@
 .Wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+  max-width: 1144px;
+  width: 100%;
+  margin: auto;
+  margin-top: 50px;
 
-  .ProfileWrapper {
-    display: flex;
-    gap: 30px;
+  border: 1px solid red;
 
-    .ProfileImage {
-      width: 72px;
-      height: 72px;
-      background-position: center;
-      background-size: cover;
-      border-radius: 100px;
-      margin-right: 16px;
-    }
-
-    .ProfileMemo {
-      border: 1px solid;
-      border-radius: 16px;
-      padding: 20px;
-    }
-  }
-
-  .ButtonWrapper {
-    display: flex;
-    gap: 10px;
-    .Button {
-    }
-    .ProfileEditButton {
-    }
-  }
+  // .ButtonWrapper {
+  //   display: flex;
+  //   gap: 10px;
+  //   .Button {
+  //   }
+  //   .ProfileEditButton {
+  //   }
+  // }
 }

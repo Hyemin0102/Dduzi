@@ -16,8 +16,6 @@ export async function POST(req: NextRequest) {
 
     const { profileMemo } = await req.json();
 
-    const userEmail = session.user.email;
-
     if (!session.user.email) {
       return NextResponse.json(
         { error: "이메일 정보가 없습니다." },
