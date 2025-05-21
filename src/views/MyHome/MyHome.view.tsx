@@ -7,6 +7,7 @@ import styles from "./MyHome.view.module.scss";
 import cn from "classnames/bind";
 import MyHomeProfile from "components/myhome/MyHomeProfile";
 import MyHomeContents from "components/myhome/MyHomeContents";
+import UpdatePostModal from "components/modal/UpdatePostModal";
 
 const cx = cn.bind(styles);
 
@@ -14,9 +15,7 @@ const MyHomeView = () => {
   const pathname = usePathname();
   const router = useRouter();
   const { data: session, status } = useSession();
-
-  console.log("홈 세션", session);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const decodedPathname = decodeURIComponent(pathname);
   const nickname = decodedPathname.slice(1);
 
@@ -29,10 +28,18 @@ const MyHomeView = () => {
     }
   }, [session, status, pathname, router]);
 
+  //게시물 작성
+  const handleToPost = () => {
+    //게시물 작성하는 모달 오픈
+    setIsModalOpen(true);
+  };
+
   return (
     <div className={cx("Wrapper")}>
       <MyHomeProfile session={session} />
       <MyHomeContents />
+      <button onClick={handleToPost}>게시물 작성</button>
+      <UpdatePostModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
     </div>
   );
 };

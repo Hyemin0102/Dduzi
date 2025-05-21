@@ -46,17 +46,14 @@ const MyHomeContents = () => {
       <div className={cx("NavigationBar")}>
         <div className={cx("borderLine")} />
         {headerList.map((label, index) => (
-          <div>
-            <div
-              key={index}
-              className={cx("NavigationButton", {
-                active: activeIndex === index,
-              })}
-              onClick={() => handleNavigationClick(index)}
-            >
-              {label}
-            </div>
-            {/* <div className={cx("Indicator")} /> */}
+          <div
+            key={index}
+            className={cx("NavigationButton", {
+              active: activeIndex === index,
+            })}
+            onClick={() => handleNavigationClick(index)}
+          >
+            {label}
           </div>
         ))}
       </div>
