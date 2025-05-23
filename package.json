@@ -16,8 +16,7 @@
     "classnames": "^2.5.1",
     "dotenv": "^16.4.7",
     "framer-motion": "^10.18.0",
-    "kakao": "link:next-auth/providers/kakao",
-    "next": "15.1.6",
+    "next": "14.2.29",
     "next-auth": "^4.24.11",
     "react": "^18",
     "react-dom": "^18",
@@ -25,18 +24,18 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/node": "^20.17.50",
+    "@types/react": "^18.3.21",
+    "@types/react-dom": "^18.3.7",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.6",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.29",
     "eslint-config-prettier": "^10.0.2",
     "eslint-plugin-prettier": "^5.2.3",
     "prettier": "^3.5.3",
     "prisma": "^6.6.0",
     "sass": "^1.84.0",
-    "typescript": "^5"
+    "typescript": "^5.8.3"
   }
 }
