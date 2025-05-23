@@ -51,13 +51,6 @@ export const authOptions: NextAuthOptions = {
           },
         });
 
-        // if (userFromDb && userFromDb.nickName) {
-        //   token.nickname = userFromDb.nickName;
-        // }
-
-        // if (userFromDb && userFromDb.image) {
-        //   token.image = userFromDb.image;
-        // }
         if (userFromDb) {
           token.nickName = userFromDb.nickName;
           token.image = userFromDb.image;
