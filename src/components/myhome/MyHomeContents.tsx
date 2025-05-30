@@ -1,67 +1,144 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./MyHomeContents.module.scss";
 import cn from "classnames/bind";
+import Image from "next/image";
+import MyhomeLayout from "layouts/MyHomeLayout";
 
 const cx = cn.bind(styles);
 const MyHomeContents = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [kycCertificationInfo, setKycCertificationInfo] = useState<any[]>();
-
-  const temp_post = [
-    {
-      label: "게시물",
-    },
-  ];
-  const temp_bookmark = [
-    {
-      label: "북마크",
-    },
-  ];
-  const temp_favorite = [
-    {
-      label: "즐겨찾기",
-    },
-  ];
-
-  const handleNavigationClick = (index: number) => {
-    setActiveIndex(index);
-    switch (index) {
-      case 0:
-        setKycCertificationInfo(temp_post);
-        break;
-      case 1:
-        setKycCertificationInfo(temp_bookmark);
-        break;
-      case 2:
-        setKycCertificationInfo(temp_favorite);
-        break;
-    }
+  const temp_post = {
+    type: "post",
+    result: [
+      {
+        id: 1,
+        content: "내가 만든 뜨개~~",
+        design: {
+          text: "도안 정보",
+          images: ["도안 이미지1", "도안 이미지2"],
+        },
+        supplies: {
+          text: "재료 정보",
+          images: ["재료 이미지1", "재료 이미지2"],
+        },
+        images: ["/static/images/post_1.jpg"],
+        logMemo: [
+          {
+            date: "2025.05.30",
+            text: "오늘은 7단까지 떴음!",
+          },
+        ],
+      },
+      {
+        id: 2,
+        content: "내가 만든 뜨개~~",
+        design: {
+          text: "도안 정보",
+          images: ["도안 이미지1", "도안 이미지2"],
+        },
+        supplies: {
+          text: "재료 정보",
+          images: ["재료 이미지1", "재료 이미지2"],
+        },
+        images: ["/static/images/post_2.jpg"],
+        logMemo: [
+          {
+            date: "2025.05.30",
+            text: "오늘은 7단까지 떴음!",
+          },
+        ],
+      },
+      {
+        id: 3,
+        content: "내가 만든 뜨개~~",
+        design: {
+          text: "도안 정보",
+          images: ["도안 이미지1", "도안 이미지2"],
+        },
+        supplies: {
+          text: "재료 정보",
+          images: ["재료 이미지1", "재료 이미지2"],
+        },
+        images: ["/static/images/post_3.jpg"],
+        logMemo: [
+          {
+            date: "2025.05.30",
+            text: "오늘은 7단까지 떴음!",
+          },
+        ],
+      },
+      {
+        id: 4,
+        content: "내가 만든 뜨개~~",
+        design: {
+          text: "도안 정보",
+          images: ["도안 이미지1", "도안 이미지2"],
+        },
+        supplies: {
+          text: "재료 정보",
+          images: ["재료 이미지1", "재료 이미지2"],
+        },
+        images: ["/static/images/post_1.jpg"],
+        logMemo: [
+          {
+            date: "2025.05.30",
+            text: "오늘은 7단까지 떴음!",
+          },
+        ],
+      },
+      {
+        id: 5,
+        content: "내가 만든 뜨개~~",
+        design: {
+          text: "도안 정보",
+          images: ["도안 이미지1", "도안 이미지2"],
+        },
+        supplies: {
+          text: "재료 정보",
+          images: ["재료 이미지1", "재료 이미지2"],
+        },
+        images: ["/static/images/post_2.jpg"],
+        logMemo: [
+          {
+            date: "2025.05.30",
+            text: "오늘은 7단까지 떴음!",
+          },
+        ],
+      },
+      {
+        id: 6,
+        content: "내가 만든 뜨개~~",
+        design: {
+          text: "도안 정보",
+          images: ["도안 이미지1", "도안 이미지2"],
+        },
+        supplies: {
+          text: "재료 정보",
+          images: ["재료 이미지1", "재료 이미지2"],
+        },
+        images: ["/static/images/post_3.jpg"],
+        logMemo: [
+          {
+            date: "2025.05.30",
+            text: "오늘은 7단까지 떴음!",
+          },
+        ],
+      },
+    ],
   };
 
-  const headerList = ["뜨개일지", "저장일지", "즐겨찾는 뜨친"];
-
   return (
-    <div className={cx("Wrapper")}>
-      {/** 네비게이션 바 */}
-      <div className={cx("NavigationBar")}>
-        <div className={cx("borderLine")} />
-        {headerList.map((label, index) => (
-          <div
-            key={index}
-            className={cx("NavigationButton", {
-              active: activeIndex === index,
-            })}
-            onClick={() => handleNavigationClick(index)}
-          >
-            {label}
-          </div>
-        ))}
-      </div>
-      {kycCertificationInfo &&
-        kycCertificationInfo?.map((item, index) => (
-          <div key={index}>{item.label}</div>
-        ))}
-    </div>
+    <MyhomeLayout currentTab="post">
+      {temp_post.result?.map((item: any, index: any) => (
+        <Image
+          key={index}
+          src={item.images[0]}
+          width={100}
+          height={100}
+          alt={item.id}
+          className={cx("Image")}
+        />
+      ))}
+    </MyhomeLayout>
   );
 };
 

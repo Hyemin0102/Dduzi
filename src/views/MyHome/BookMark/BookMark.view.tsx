@@ -1,35 +1,15 @@
 "use client";
-import { useSession, signOut } from "next-auth/react";
+
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import styles from "./MyHome.view.module.scss";
+import React from "react";
+import styles from "./BookMark.view.module.scss";
 import cn from "classnames/bind";
-import MyHomeProfile from "components/myhome/MyHomeProfile";
-import MyHomeContents from "components/myhome/MyHomeContents";
-import UpdatePostModal from "components/modal/UpdatePostModal";
 import MyhomeLayout from "layouts/MyHomeLayout";
 
 const cx = cn.bind(styles);
 
-const MyHomeView = () => {
-  const pathname = usePathname();
-  const router = useRouter();
-  const { data: session, status } = useSession();
-
-  const decodedPathname = decodeURIComponent(pathname);
-  const nickname = decodedPathname.slice(1);
-
-  useEffect(() => {
-    if (status === "authenticated" && session?.user?.nickName) {
-      // 현재 URL의 닉네임과 로그인한 사용자의 닉네임이 다르면 리다이렉트
-      if (!nickname.includes(session.user.nickName)) {
-        router.replace(`/${session.user.nickName}`);
-      }
-    }
-  }, [session, status, pathname, router]);
-
-  const temp_post = {
+const BookMarkView = () => {
+  const temp_bookmark = {
     type: "post",
     result: [
       {
@@ -150,8 +130,8 @@ const MyHomeView = () => {
   };
 
   return (
-    <MyhomeLayout currentTab="post">
-      {temp_post.result?.map((item: any, index: any) => (
+    <MyhomeLayout currentTab="bookmark">
+      {temp_bookmark.result?.map((item: any, index: any) => (
         <Image
           key={index}
           src={item.images[0]}
@@ -165,4 +145,4 @@ const MyHomeView = () => {
   );
 };
 
-export default MyHomeView;
+export default BookMarkView;

@@ -1,10 +1,11 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./MyHomeProfile.module.scss";
 import cn from "classnames/bind";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Session } from "next-auth";
+import UpdatePostModal from "components/modal/UpdatePostModal";
 
 const cx = cn.bind(styles);
 
@@ -15,6 +16,7 @@ interface MyHomeProfileProps {
 const MyHomeProfile = (props: MyHomeProfileProps) => {
   const { session } = props;
   const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   //로그아웃
   const handleSignOut = async () => {
@@ -25,6 +27,12 @@ const MyHomeProfile = (props: MyHomeProfileProps) => {
   //프로필 편집
   const handleToProfileEdit = () => {
     router.push("/accounts/edit");
+  };
+
+  //게시물 작성
+  const handleToPost = () => {
+    //게시물 작성하는 모달 오픈
+    setIsModalOpen(true);
   };
 
   return (
@@ -97,6 +105,8 @@ const MyHomeProfile = (props: MyHomeProfileProps) => {
           />
         </div>
       </div>
+      <button onClick={handleToPost}>게시물 작성</button>
+      <UpdatePostModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
     </div>
   );
 };
