@@ -1,0 +1,50 @@
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 80px 24px 60px;
+  color: #191919;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.date {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 48px;
+}
+
+.section {
+  margin-bottom: 36px;
+}
+
+.sectionTitle {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subTitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+.body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+  white-space: pre-line;
+}
+
+.footer {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  color: #888;
+}
